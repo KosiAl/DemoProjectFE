@@ -74,7 +74,7 @@ describe('LoginComponent', () => {
 
     it('should remove readonly attribute from input element', () => {
         const input = { removeAttribute: jasmine.createSpy('removeAttribute') };
-        component.removeReadonly(input);
+        component.removeReadonly(input as any);
         expect(input.removeAttribute).toHaveBeenCalledWith('readonly');
     });
 
