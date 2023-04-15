@@ -1,0 +1,64 @@
+<div class="ks-bkgd flex h-screen items-center justify-center font-nice">
+    <div class="ks-card ks-border-primary open">
+        <div class="mt-8">
+            <h2 class="ks-text-h0 p-2 text-center">Register new user</h2>
+            <p class="ks-text-p mt-4 text-center">
+                Or
+                <a href="/login" class="ks-text-h3-primary">login if you have account</a>
+            </p>
+        </div>
+        <!-- FORM -->
+        <form [formGroup]="registerForm" autocomplete="off" (ngSubmit)="register()" class="mt-10 space-y-6">
+            <input type="hidden" name="remember" value="true" />
+            <div class="-space-y-px rounded-md shadow-sm">
+                <div>
+                    <label for="name" class="sr-only">Name</label>
+                    <input
+                        formControlName="name"
+                        type="text"
+                        class="ks-form-area relative block w-full appearance-none rounded-none rounded-t-lg"
+                        placeholder="Your name" />
+                    <div class="ml-3" *ngIf="registerForm.get('name')?.invalid && (registerForm.get('name')?.dirty || registerForm.get('name')?.touched)">
+                        <div class="text-sm text-red-500" *ngIf="registerForm.get('name')?.errors?.['required']">Name is required.</div>
+                    </div>
+                </div>
+                <div>
+                    <label for="email" class="sr-only">Email address</label>
+                    <input
+                        #input
+                        readonly
+                        (focus)="removeReadonly(input)"
+                        formControlName="email"
+                        type="email"
+                        class="ks-form-area relative block w-full appearance-none"
+                        placeholder="Email address" />
+                    <div class="ml-3" *ngIf="registerForm.get('email')?.invalid && (registerForm.get('email')?.dirty || registerForm.get('email')?.touched)">
+                        <div class="text-sm text-red-500" *ngIf="registerForm.get('email')?.errors?.['required']">Email is required.</div>
+                        <div class="text-sm text-red-500" *ngIf="registerForm.get('email')?.errors?.['email']">Please enter a valid email.</div>
+                    </div>
+                </div>
+                <div>
+                    <label for="password" class="sr-only">Password</label>
+                    <input
+                        formControlName="password"
+                        type="password"
+                        class="ks-form-area relative block w-full appearance-none rounded-none rounded-b-lg"
+                        placeholder="Password" />
+                    <div class="ml-3" *ngIf="registerForm.get('password')?.invalid && (registerForm.get('password')?.dirty || registerForm.get('password')?.touched)">
+                        <div class="text-sm text-red-500" *ngIf="registerForm.get('password')?.errors?.['required']">Password is required.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex">
+                <button type="submit" [disabled]="registerForm.invalid" class="ks-btn-primary-stroke mx-auto mt-4 content-center">Register</button>
+            </div>
+        </form>
+    </div>
+</div>
+<notification
+    [shouldOpen]="notification.shouldOpen"
+    [type]="notification.type"
+    (onClose)="notification.shouldOpen = $event"
+    [description]="notification.description"
+    [timeout]="notification.timeout"></notification>

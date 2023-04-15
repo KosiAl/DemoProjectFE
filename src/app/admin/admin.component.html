@@ -1,0 +1,163 @@
+<page-loader *ngIf="isPageLoading"></page-loader>
+
+<div>
+    <div *ngIf="sidebarOpen" class="relative z-40 xl:hidden" role="dialog" aria-modal="true">
+        <div *ngIf="sidebarOpen" class="fixed inset-0 bg-gray-600 bg-opacity-75 backdrop-blur-sm"></div>
+
+        <div *ngIf="sidebarOpen" class="fixed inset-0 z-40 flex">
+            <div *ngIf="sidebarOpen" (click)="toggleOffCanvasMenu()" class="fixed inset-0"></div>
+
+            <div *ngIf="sidebarOpen" class="ks-bkgd relative flex w-full max-w-xs flex-1 flex-col">
+                <div *ngIf="sidebarOpen" class="absolute top-0 right-0 -mr-12 pt-2">
+                    <button type="button" (click)="toggleOffCanvasMenu()" class="absolute -left-20 top-3 flex items-center justify-center">
+                        <span class="sr-only">Close sidebar</span>
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke="currentColor"
+                            class="h-6 w-6 text-gray-800 dark:text-gray-200">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </button>
+                </div>
+
+                <div id="customScrollBar" class="h-0 flex-1 overflow-y-auto pb-4 pt-3">
+                    <nav class="mt-3 space-y-1">
+                        <a
+                            (click)="sidebarOpen = !sidebarOpen"
+                            routerLink="/admin/list"
+                            [ngClass]="router.url === '/admin/list' ? 'ks-menu-item-selected-mobile' : 'ks-menu-item-default'"
+                            class="ks-menu-item flex items-center">
+                            Books
+                        </a>
+                        <a
+                            (click)="sidebarOpen = !sidebarOpen"
+                            routerLink="/admin/favorites"
+                            [ngClass]="router.url === '/admin/favorites' ? 'ks-menu-item-selected-mobile' : 'ks-menu-item-default'"
+                            class="ks-menu-item flex items-center">
+                            Favorite
+                        </a>
+                        <a
+                            (click)="logout()"
+                            class="ks-menu-item flex items-center ks-menu-item-default cursor-pointer">
+                            Logout
+                        </a>
+                    </nav>
+                </div>
+            </div>
+
+            <div class="w-14 flex-shrink-0">
+                <!-- Force sidebar to shrink to fit close icon -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Static sidebar for desktop -->
+    <div class="hidden transition-all duration-300 xl:fixed xl:inset-y-0 xl:flex xl:w-52 xl:flex-col">
+        <div class="ks-bkgd flex min-h-0 flex-1 flex-col">
+            <div id="hiddenScrollBar" class="relative flex flex-1 flex-col overflow-x-hidden pb-4">
+                <div class="flex w-52 flex-shrink-0 p-4">
+                    <div class="group ml-1 block w-full flex-shrink-0 transition-all duration-300">
+                        <div class="flex h-16 flex-col items-center">
+                            <p class="ks-text-h2">Welcome,</p>
+                            <p class="ks-text-h2-primary">{{username}}</p>
+                        </div>
+                    </div>
+                </div>
+                <nav class="flex-1 space-y-1">
+                    <a
+                        (click)="sidebarOpen = !sidebarOpen"
+                        routerLink="/admin/list"
+                        [ngClass]="router.url === '/admin/list' ? 'ks-menu-item-selected-mobile' : 'ks-menu-item-default'"
+                        class="ks-menu-item group flex items-center">
+                        Books
+                    </a>
+                    <a
+                        (click)="sidebarOpen = !sidebarOpen"
+                        routerLink="/admin/favorites"
+                        [ngClass]="router.url === '/admin/favorites' ? 'ks-menu-item-selected-mobile' : 'ks-menu-item-default'"
+                        class="ks-menu-item group flex items-center">
+                        Favorites
+                    </a>
+                </nav>
+
+                <div class="ml-3 block w-full flex-shrink-0">
+                    <div class="-mb-1">
+                        <themeToggle class="relative -left-8" (click)="toggleDarkMode()" [isLight]="!darkMode"></themeToggle>
+                    </div>
+                    <!-- COLOR CHOICES -->
+                    <div class="flex flex-row flex-wrap gap-2">
+                        <button
+                            [ngClass]="
+                                currentTheme === 'theme-blue'
+                                    ? 'ring-2 ring-gray-900 dark:ring-white'
+                                    : 'hover:ring-2 hover:ring-gray-900 dark:hover:ring-white'
+                            "
+                            class="h-6 w-6 rounded-full bg-blue-500 ring-gray-900 transition-all duration-300"
+                            (click)="changeTheme('theme-blue')"></button>
+                        <button
+                            [ngClass]="
+                                currentTheme === 'theme-violet'
+                                    ? 'ring-2 ring-gray-900 dark:ring-white'
+                                    : 'hover:ring-2 hover:ring-gray-900 dark:hover:ring-white'
+                            "
+                            class="h-6 w-6 rounded-full bg-violet-500 transition-all duration-300"
+                            (click)="changeTheme('theme-violet')"></button>
+                        <button
+                            [ngClass]="
+                                currentTheme === 'theme-amber'
+                                    ? 'ring-2 ring-gray-900 dark:ring-white'
+                                    : 'hover:ring-2 hover:ring-gray-900 dark:hover:ring-white'
+                            "
+                            class="h-6 w-6 rounded-full bg-amber-500 transition-all duration-300"
+                            (click)="changeTheme('theme-amber')"></button>
+                        <button
+                            [ngClass]="
+                                currentTheme === 'theme-red' ? 'ring-2 ring-gray-900 dark:ring-white' : 'hover:ring-2 hover:ring-gray-900 dark:hover:ring-white'
+                            "
+                            class="h-6 w-6 rounded-full bg-red-500 transition-all duration-300"
+                            (click)="changeTheme('theme-red')"></button>
+                        <button
+                            [ngClass]="
+                                currentTheme === 'theme-pink'
+                                    ? 'ring-2 ring-gray-900 dark:ring-white'
+                                    : 'hover:ring-2 hover:ring-gray-900 dark:hover:ring-white'
+                            "
+                            class="h-6 w-6 rounded-full bg-pink-500 transition-all duration-300"
+                            (click)="changeTheme('theme-pink')"></button>
+                        <button
+                            [ngClass]="
+                                currentTheme === 'theme-green'
+                                    ? 'ring-2 ring-gray-900 dark:ring-white'
+                                    : 'hover:ring-2 hover:ring-gray-900 dark:hover:ring-white'
+                            "
+                            class="h-6 w-6 rounded-full bg-green-500 transition-all duration-300"
+                            (click)="changeTheme('theme-green')"></button>
+                    </div>
+                </div>
+            </div>
+            <button class="ks-btn-primary text-black" (click)="logout()">LOGOUT</button>
+        </div>
+    </div>
+    <div class="flex flex-1 flex-col transition-all duration-300 xl:pl-52">
+        <div class="ks-bkgd sticky top-0 z-10 h-5 pl-1 pt-1 xl:hidden">
+            <button type="button" (click)="toggleOffCanvasMenu()" class="ml-2 mt-2 inline-flex items-center justify-center">
+                <span class="sr-only">Open sidebar</span>
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="h-6 w-6 text-gray-800 dark:text-gray-200">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+            </button>
+        </div>
+        <main class="flex-1">
+            <router-outlet></router-outlet>
+        </main>
+    </div>
+</div>

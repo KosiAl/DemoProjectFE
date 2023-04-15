@@ -1,0 +1,120 @@
+$cHeight: 450px;
+$cWidth: 450px;
+
+.open {
+    height: $cHeight;
+    width: $cWidth;
+}
+
+.animateClose{
+    overflow: hidden;
+    animation-name: close;
+    animation-duration: 2s;
+    -webkit-animation-fill-mode: forwards;
+
+  }
+
+@keyframes close {
+    0% {height: $cHeight - 10px; width: $cWidth; padding:24px; opacity:100}
+    1% {height: $cHeight - 20px; width: $cWidth; padding:24px; opacity:100}
+    2% {height: $cHeight - 30px; width: $cWidth; padding:24px; opacity:100}
+    3% {height: $cHeight - 40px; width: $cWidth; padding:24px; opacity:100}
+    4% {height: $cHeight - 50px; width: $cWidth; padding:24px; opacity:100}
+    5% {height: $cHeight - 60px; width: $cWidth; padding:24px; opacity:100}
+    6% {height: $cHeight - 70px; width: $cWidth; padding:24px; opacity:100}
+    7% {height: $cHeight - 80px; width: $cWidth; padding:24px; opacity:100}
+    8% {height: $cHeight - 90px; width: $cWidth; padding:24px; opacity:100}
+    9% {height: $cHeight - 100px; width: $cWidth; padding:24px; opacity:100}
+    10% {height: $cHeight - 110px; width: $cWidth; padding:24px; opacity:100}
+    11% {height: $cHeight - 120px; width: $cWidth; padding:24px; opacity:100}
+    12% {height: $cHeight - 130px; width: $cWidth; padding:24px; opacity:100}
+    13% {height: $cHeight - 140px; width: $cWidth; padding:24px; opacity:100}
+    14% {height: $cHeight - 150px; width: $cWidth; padding:24px; opacity:100}
+    15% {height: $cHeight - 160px; width: $cWidth; padding:24px; opacity:100}
+    16% {height: $cHeight - 170px; width: $cWidth; padding:24px; opacity:100}
+    17% {height: $cHeight - 180px; width: $cWidth; padding:24px; opacity:100}
+    18% {height: $cHeight - 190px; width: $cWidth; padding:24px; opacity:100}
+    19% {height: $cHeight - 200px; width: $cWidth; padding:24px; opacity:100}
+    20% {height: $cHeight - 210px; width: $cWidth; padding:24px; opacity:100}
+    21% {height: $cHeight - 220px; width: $cWidth; padding:24px; opacity:100}
+    22% {height: $cHeight - 230px; width: $cWidth; padding:24px; opacity:100}
+    23% {height: $cHeight - 240px; width: $cWidth; padding:24px; opacity:100}
+    24% {height: $cHeight - 250px; width: $cWidth; padding:24px; opacity:100}
+    25% {height: $cHeight - 260px; width: $cWidth; padding:24px; opacity:100}
+    26% {height: $cHeight - 270px; width: $cWidth; padding:24px; opacity:100}
+    27% {height: $cHeight - 280px; width: $cWidth; padding:24px; opacity:100}
+    28% {height: $cHeight - 290px; width: $cWidth; padding:24px; opacity:100}
+    29% {height: $cHeight - 300px; width: $cWidth; padding:24px; opacity:100}
+    30% {height: $cHeight - 310px; width: $cWidth; padding:24px; opacity:100}
+    31% {height: $cHeight - 320px; width: $cWidth; padding:24px; opacity:100}
+    32% {height: $cHeight - 330px; width: $cWidth; padding:24px; opacity:100}
+    33% {height: $cHeight - 340px; width: $cWidth; padding:24px; opacity:100}
+    34% {height: $cHeight - 350px; width: $cWidth; padding:24px; opacity:100}
+    35% {height: $cHeight - 360px; width: $cWidth; padding:24px; opacity:100}
+    36% {height: $cHeight - 370px; width: $cWidth; padding:24px; opacity:100}
+    37% {height: $cHeight - 380px; width: $cWidth; padding:21px; opacity:100}
+    38% {height: $cHeight - 390px; width: $cWidth; padding:18px; opacity:100}
+    39% {height: $cHeight - 400px; width: $cWidth; padding:15px; opacity:100}
+    40% {height: $cHeight - 410px; width: $cWidth; padding:12px; opacity:100}
+    41% {height: $cHeight - 420px; width: $cWidth; padding:9px; opacity:100}
+    42% {height: $cHeight - 430px; width: $cWidth; padding:6px; opacity:100}
+    43% {height: $cHeight - 440px; width: $cWidth; padding:3px; opacity:100}
+    44% {height: $cHeight - 445px; width: $cWidth; padding:0px; opacity:100}
+    45% {height: $cHeight - 450px; width: $cWidth - 10px;padding:0px; opacity:100}
+    46% {height: $cHeight - 450px; width: $cWidth - 20px;padding:0px; opacity:100}
+    47% {height: $cHeight - 450px; width: $cWidth - 30px;padding:0px; opacity:100}
+    48% {height: $cHeight - 450px; width: $cWidth - 40px;padding:0px; opacity:100}
+    49% {height: $cHeight - 450px; width: $cWidth - 50px;padding:0px; opacity:100}
+    50% {height: $cHeight - 450px; width: $cWidth - 60px;padding:0px; opacity:100}
+    51% {height: $cHeight - 450px; width: $cWidth - 70px;padding:0px; opacity:100}
+    52% {height: $cHeight - 450px; width: $cWidth - 80px;padding:0px; opacity:100}
+    53% {height: $cHeight - 450px; width: $cWidth - 90px;padding:0px; opacity:100}
+    54% {height: $cHeight - 450px; width: $cWidth - 100px;padding:0px; opacity:100}
+    55% {height: $cHeight - 450px; width: $cWidth - 120px;padding:0px; opacity:100}
+    56% {height: $cHeight - 450px; width: $cWidth - 140px;padding:0px; opacity:100}
+    57% {height: $cHeight - 450px; width: $cWidth - 160px;padding:0px; opacity:100}
+    58% {height: $cHeight - 450px; width: $cWidth - 180px;padding:0px; opacity:100}
+    59% {height: $cHeight - 450px; width: $cWidth - 200px;padding:0px; opacity:100}
+    60% {height: $cHeight - 450px; width: $cWidth - 230px;padding:0px; opacity:100}
+    61% {height: $cHeight - 450px; width: $cWidth - 260px;padding:0px; opacity:80}
+    62% {height: $cHeight - 450px; width: $cWidth - 290px;padding:0px; opacity:60}
+    63% {height: $cHeight - 450px; width: $cWidth - 330px;padding:0px; opacity:50}
+    64% {height: $cHeight - 450px; width: $cWidth - 370px;padding:0px; opacity:30}
+    65% {height: $cHeight - 450px; width: $cWidth - 420px;padding:0px; opacity:10}   
+    66% {height: $cHeight - 450px; width: $cWidth - 450px;padding:0px; opacity:0}
+    67% {height: $cHeight - 450px; width: $cWidth - 450px;padding:0px; opacity:0}
+    68% {height: $cHeight - 450px; width: $cWidth - 450px;padding:0px; opacity:0}
+    69% {height: $cHeight - 450px; width: $cWidth - 450px;padding:0px; opacity:0}
+    70% {height: $cHeight - 450px; width: $cWidth - 450px;padding:0px; opacity:0}
+    71% {height: $cHeight - 450px; width: $cWidth - 450px;padding:0px; opacity:0}
+    72% {height: $cHeight - 450px; width: $cWidth - 450px;padding:0px; opacity:0}
+    73% {height: $cHeight - 450px; width: $cWidth - 450px;padding:0px; opacity:0}
+    74% {height: $cHeight - 450px; width: $cWidth - 450px;padding:0px; opacity:0}
+    75% {height: $cHeight - 450px; width: $cWidth - 450px;padding:0px; opacity:0}
+    76% {height: $cHeight - 450px; width: $cWidth - 450px;padding:0px; opacity:0}
+    77% {height: $cHeight - 450px; width: $cWidth - 450px;padding:0px; opacity:0}
+    78% {height: $cHeight - 450px; width: $cWidth - 450px;padding:0px; opacity:0}
+    79% {height: $cHeight - 450px; width: $cWidth - 450px;padding:0px; opacity:0}
+    80% {height: $cHeight - 450px; width: $cWidth - 450px;padding:0px; opacity:0}
+    81% {height: $cHeight - 450px; width: $cWidth - 450px;padding:0px; opacity:0}
+    82% {height: $cHeight - 450px; width: $cWidth - 450px;padding:0px; opacity:0}
+    83% {height: $cHeight - 450px; width: $cWidth - 450px;padding:0px; opacity:0}
+    84% {height: $cHeight - 450px; width: $cWidth - 450px;padding:0px; opacity:0}
+    85% {height: $cHeight - 450px; width: $cWidth - 450px;padding:0px; opacity:0}
+    86% {height: $cHeight - 450px; width: $cWidth - 450px;padding:0px; opacity:0}
+    87% {height: $cHeight - 450px; width: $cWidth - 450px;padding:0px; opacity:0}
+    88% {height: $cHeight - 450px; width: $cWidth - 450px;padding:0px; opacity:0}
+    89% {height: $cHeight - 450px; width: $cWidth - 450px;padding:0px; opacity:0}
+    90% {height: $cHeight - 450px; width: $cWidth - 450px;padding:0px; opacity:0}
+    91% {height: $cHeight - 450px; width: $cWidth - 450px;padding:0px; opacity:0}
+    92% {height: $cHeight - 450px; width: $cWidth - 450px;padding:0px; opacity:0}
+    93% {height: $cHeight - 450px; width: $cWidth - 450px;padding:0px; opacity:0}
+    94% {height: $cHeight - 450px; width: $cWidth - 450px;padding:0px; opacity:0}
+    95% {height: $cHeight - 450px; width: $cWidth - 450px;padding:0px; opacity:0}
+    96% {height: $cHeight - 450px; width: $cWidth - 450px;padding:0px; opacity:0}
+    97% {height: $cHeight - 450px; width: $cWidth - 450px;padding:0px; opacity:0}
+    98% {height: $cHeight - 450px; width: $cWidth - 450px;padding:0px; opacity:0}
+    99% {height: $cHeight - 450px; width: $cWidth - 450px;padding:0px; opacity:0}
+    100% {height: $cHeight - 450px; width: $cWidth - 450px;padding:0px; opacity:0}
+
+  }

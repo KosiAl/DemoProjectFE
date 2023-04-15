@@ -1,0 +1,326 @@
+<div class="fadeIn px-4 sm:px-6 lg:px-8">
+    <div class="sm:flex sm:items-center">
+        <div class="sm:flex-auto">
+            <h2 i18n class="ks-text-h0-primary mt-8">List of books</h2>
+            <!-- <button (click)="switchLanguage('en-US')">SWITCH LANG</button> -->
+            <div>
+                <div class="relative mt-4">
+                    <svg
+                        class="pointer-events-none absolute top-3.5 left-4 h-5 w-5 text-gray-400"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                        aria-hidden="true">
+                        <path
+                            fill-rule="evenodd"
+                            d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                            clip-rule="evenodd" />
+                    </svg>
+                    <input
+                        #search
+                        (keyup)="filterTable(search.value)"
+                        type="text"
+                        class="ks-form-area-rounded h-12 w-full bg-card-light pl-11 pr-4 dark:bg-card-dark"
+                        placeholder="Filter ..."
+                        role="combobox"
+                        aria-expanded="false"
+                        aria-controls="options" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mt-8 flex flex-col">
+        <div class="-my-2 -mx-4 sm:-mx-6 lg:-mx-8">
+            <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+                <div class="shadow md:rounded-lg">
+                    <table class="ks-table" style="border-spacing: 0">
+                        <!-- Table header -->
+                        <thead>
+                            <tr class="ks-table-thead-tr cursor-pointer">
+                                <th class="rounded-tl-lg">Add to Favorites</th>
+                                <th class="relative" (click)="sortByTableColumn('name')">
+                                    Name
+                                    <div class="absolute top-3 -right-1">
+                                        <!-- DEFAULT -->
+                                        <svg
+                                            *ngIf="sortState === 'dec'"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke-width="1.5"
+                                            stroke="currentColor"
+                                            class="h-6 w-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9" />
+                                        </svg>
+                                        <!-- UP -->
+                                        <svg
+                                            *ngIf="sortState === 'def' && sortProperty === 'name'"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 20 20"
+                                            fill="currentColor"
+                                            class="h-5 w-5">
+                                            <path
+                                                fill-rule="evenodd"
+                                                d="M14.77 12.79a.75.75 0 01-1.06-.02L10 8.832 6.29 12.77a.75.75 0 11-1.08-1.04l4.25-4.5a.75.75 0 011.08 0l4.25 4.5a.75.75 0 01-.02 1.06z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+
+                                        <!-- DOWN -->
+                                        <svg
+                                            *ngIf="sortState === 'asc' && sortProperty === 'name'"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 20 20"
+                                            fill="currentColor"
+                                            class="h-5 w-5">
+                                            <path
+                                                fill-rule="evenodd"
+                                                d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                </th>
+                                <th (click)="sortByTableColumn('released')">
+                                    Released
+                                    <div class="absolute top-3 -right-1">
+                                        <!-- DEFAULT -->
+                                        <svg
+                                            *ngIf="sortState === 'dec'"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke-width="1.5"
+                                            stroke="currentColor"
+                                            class="h-6 w-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9" />
+                                        </svg>
+                                        <!-- UP -->
+                                        <svg
+                                            *ngIf="sortState === 'def' && sortProperty === 'released'"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 20 20"
+                                            fill="currentColor"
+                                            class="h-5 w-5">
+                                            <path
+                                                fill-rule="evenodd"
+                                                d="M14.77 12.79a.75.75 0 01-1.06-.02L10 8.832 6.29 12.77a.75.75 0 11-1.08-1.04l4.25-4.5a.75.75 0 011.08 0l4.25 4.5a.75.75 0 01-.02 1.06z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+
+                                        <!-- DOWN -->
+                                        <svg
+                                            *ngIf="sortState === 'asc' && sortProperty === 'released'"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 20 20"
+                                            fill="currentColor"
+                                            class="h-5 w-5">
+                                            <path
+                                                fill-rule="evenodd"
+                                                d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                </th>
+                                <th (click)="sortByTableColumn('numberOfPages')">
+                                    Pages
+                                    <div class="absolute top-3 -right-1">
+                                        <!-- DEFAULT -->
+                                        <svg
+                                            *ngIf="sortState === 'dec'"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke-width="1.5"
+                                            stroke="currentColor"
+                                            class="h-6 w-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9" />
+                                        </svg>
+                                        <!-- UP -->
+                                        <svg
+                                            *ngIf="sortState === 'def' && sortProperty === 'numberOfPages'"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 20 20"
+                                            fill="currentColor"
+                                            class="h-5 w-5">
+                                            <path
+                                                fill-rule="evenodd"
+                                                d="M14.77 12.79a.75.75 0 01-1.06-.02L10 8.832 6.29 12.77a.75.75 0 11-1.08-1.04l4.25-4.5a.75.75 0 011.08 0l4.25 4.5a.75.75 0 01-.02 1.06z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+
+                                        <!-- DOWN -->
+                                        <svg
+                                            *ngIf="sortState === 'asc' && sortProperty === 'numberOfPages'"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 20 20"
+                                            fill="currentColor"
+                                            class="h-5 w-5">
+                                            <path
+                                                fill-rule="evenodd"
+                                                d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                </th>
+                                <th (click)="sortByTableColumn('publisher')">
+                                    Publisher
+                                    <div class="absolute top-3 -right-1">
+                                        <!-- DEFAULT -->
+                                        <svg
+                                            *ngIf="sortState === 'dec'"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke-width="1.5"
+                                            stroke="currentColor"
+                                            class="h-6 w-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9" />
+                                        </svg>
+                                        <!-- UP -->
+                                        <svg
+                                            *ngIf="sortState === 'def' && sortProperty === 'publisher'"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 20 20"
+                                            fill="currentColor"
+                                            class="h-5 w-5">
+                                            <path
+                                                fill-rule="evenodd"
+                                                d="M14.77 12.79a.75.75 0 01-1.06-.02L10 8.832 6.29 12.77a.75.75 0 11-1.08-1.04l4.25-4.5a.75.75 0 011.08 0l4.25 4.5a.75.75 0 01-.02 1.06z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+
+                                        <!-- DOWN -->
+                                        <svg
+                                            *ngIf="sortState === 'asc' && sortProperty === 'publisher'"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 20 20"
+                                            fill="currentColor"
+                                            class="h-5 w-5">
+                                            <path
+                                                fill-rule="evenodd"
+                                                d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                </th>
+                                <th (click)="sortByTableColumn('country')">
+                                    Country
+                                    <div class="absolute top-3 -right-1">
+                                        <!-- DEFAULT -->
+                                        <svg
+                                            *ngIf="sortState === 'dec'"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke-width="1.5"
+                                            stroke="currentColor"
+                                            class="h-6 w-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9" />
+                                        </svg>
+                                        <!-- UP -->
+                                        <svg
+                                            *ngIf="sortState === 'def' && sortProperty === 'country'"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 20 20"
+                                            fill="currentColor"
+                                            class="h-5 w-5">
+                                            <path
+                                                fill-rule="evenodd"
+                                                d="M14.77 12.79a.75.75 0 01-1.06-.02L10 8.832 6.29 12.77a.75.75 0 11-1.08-1.04l4.25-4.5a.75.75 0 011.08 0l4.25 4.5a.75.75 0 01-.02 1.06z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+
+                                        <!-- DOWN -->
+                                        <svg
+                                            *ngIf="sortState === 'asc' && sortProperty === 'country'"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 20 20"
+                                            fill="currentColor"
+                                            class="h-5 w-5">
+                                            <path
+                                                fill-rule="evenodd"
+                                                d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                </th>
+                                <th class="rounded-tr-lg" (click)="sortByTableColumn('mediaType')">
+                                    Media type
+                                    <div class="absolute top-3 -right-1">
+                                        <!-- DEFAULT -->
+                                        <svg
+                                            *ngIf="sortState === 'dec'"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke-width="1.5"
+                                            stroke="currentColor"
+                                            class="h-6 w-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9" />
+                                        </svg>
+                                        <!-- UP -->
+                                        <svg
+                                            *ngIf="sortState === 'def' && sortProperty === 'mediaType'"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 20 20"
+                                            fill="currentColor"
+                                            class="h-5 w-5">
+                                            <path
+                                                fill-rule="evenodd"
+                                                d="M14.77 12.79a.75.75 0 01-1.06-.02L10 8.832 6.29 12.77a.75.75 0 11-1.08-1.04l4.25-4.5a.75.75 0 011.08 0l4.25 4.5a.75.75 0 01-.02 1.06z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+
+                                        <!-- DOWN -->
+                                        <svg
+                                            *ngIf="sortState === 'asc' && sortProperty === 'mediaType'"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 20 20"
+                                            fill="currentColor"
+                                            class="h-5 w-5">
+                                            <path
+                                                fill-rule="evenodd"
+                                                d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <!-- Table body -->
+                        <tbody
+                            class="dark:bg-card-dark"
+                            *ngFor="let book of books; let i = index; let l = last"
+                            [ngClass]="book.selected ? 'bg-gray-100 dark:bg-gray-800' : 'bg-white'">
+                            <tr class="ks-table-tbody-tr">
+                                <td [ngClass]="l ? 'rounded-bl-lg' : ''" class="relative">
+                                    <div>
+                                        <div *ngIf="book.selected" class="absolute inset-y-0 left-0 w-0.5 bg-primary-500"></div>
+                                        <input
+                                            #input
+                                            (click)="onBookSelect(input, book)"
+                                            [checked]="book.selected"
+                                            checked
+                                            type="checkbox"
+                                            class="ks-checkbox" />
+                                    </div>
+                                </td>
+                                <td class="cursor-pointer" (click)="openDetailPage(book)">
+                                    {{ book.name }}
+                                </td>
+                                <td>
+                                    {{ book.released | date: 'dd/MM/yyyy' }}
+                                </td>
+                                <td>
+                                    {{ book.numberOfPages }}
+                                </td>
+                                <td>{{ book.publisher }}</td>
+                                <td>{{ book.country }}</td>
+                                <td [ngClass]="l ? 'rounded-br-lg' : ''">{{ book.mediaType }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
