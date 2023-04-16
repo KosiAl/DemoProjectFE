@@ -12,7 +12,8 @@
     - Can log out from the app.
     - Can control the app's theme (light/dark).
     - Can select primary color of application theme.
-- Application uses a REST API to store and retrieve data.
+- Application uses a REST API to retrieve data.
+- Aplication uses lazy loading for modules.
 - The app is built using NgRx to manage the state of favorite books.
 - The app is built using Tailwind for UI components.
 - An authentication module implemented with Node.js.
@@ -48,13 +49,14 @@
 3. If no user is registered, you can navigate to the register page by clicking "register new user" text.
 4. After successful registration, you can login with the new user by clicking "login if you have account".
 5. After successful login, you will be redirected to list page where you can view list of books.
-6. You can search for books by typing in the search bar. Search will be performed on all fields of the book.
+6. You can filter books by typing in the search bar. Search will be performed on all fields of the book.
 7. You can sort the list by clicking on the column name. First click will sort the list in descending order, second click will sort the list in ascending order. Third click will reset the sorting.
-8. If you click on the book name, you will be redirected to details page where you can view more information about the book.
-9. Books can be added to favorites from details page.
-10. You can add/remove books to/from favorites by clicking on the checkbox inside table.
-11. Favorites page can be accessed by clicking on the FAVORITES button in the header.
-12. Removing books from favorites will adjust the total page number and reflect the state in the list page (inside the table)
+8. On the left side of the table, you can see checkboxes. These checkboxes are used to add/remove books to/from favorites.
+9. If you click on the book name, you will be redirected to details page where you can view more information about the book.
+10. Books can be added to favorites from details page.
+11. You can add/remove books to/from favorites by clicking on the checkbox inside table.
+12. Favorites page can be accessed by clicking on the FAVORITES button in the header.
+13. Removing books from favorites will adjust the total page number and reflect the state in the list page (inside the table)
 
 ## Bonus features
 1. User can change the theme of the application by clicking on the theme button on the sidemenu.
