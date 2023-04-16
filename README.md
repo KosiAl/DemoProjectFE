@@ -54,9 +54,8 @@
 8. On the left side of the table, you can see checkboxes. These checkboxes are used to add/remove books to/from favorites.
 9. If you click on the book name, you will be redirected to details page where you can view more information about the book.
 10. Books can be added to favorites from details page.
-11. You can add/remove books to/from favorites by clicking on the checkbox inside table.
-12. Favorites page can be accessed by clicking on the FAVORITES button in the header.
-13. Removing books from favorites will adjust the total page number and reflect the state in the list page (inside the table)
+11. Favorites page can be accessed by clicking on the FAVORITES button in the header.
+12. Removing books from favorites will adjust the total page number and reflect the state in the list page (inside the table)
 
 ## Bonus features
 1. User can change the theme of the application by clicking on the theme button on the sidemenu.
