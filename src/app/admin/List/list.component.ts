@@ -31,12 +31,16 @@ export class ListComponent implements OnInit {
 
     // This function is used to get all the books from the API and make a copy of the data
     async getBooksAndMakeCopy() {
-        let data: Book[] = (await this.service.getAllBooks()) as Book[];
+        let [error, data] = await this.service.request(this.service.getAllBooks());
         if (data) {
             this.booksCopy = [...data];
             this.books = data;
         }
+        if(error) {
+            alert('Error: Server offline');
+        }
     }
+
 
     // This function is used to sync the selected books with the store
     syncSelectedFavorites() {
@@ -110,7 +114,7 @@ export class ListComponent implements OnInit {
     }
 
     // This function is used to add/remove the book to/from the store
-    onBookSelect(input: HTMLInputElement, book: Book) {
+    onBookSelect(input: any, book: Book) {
         if (input.checked) {
             book.selected = true;
             this.store.dispatch(addToFavorites({ book: { ...book } }));
